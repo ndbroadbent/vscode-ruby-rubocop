@@ -74,6 +74,9 @@ Specify configuration (via navigating to `File > Preferences > Workspace Setting
 
   // default: true
   "ruby.rubocop.onSave": true
+
+  // VSCode command to run after formatting the document. E.g. prettier.forceFormatDocument
+  "ruby.rubocop.postFormatVSCodeCommand": ""
 }
 ```
 

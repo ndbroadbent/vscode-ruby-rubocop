@@ -11,6 +11,7 @@ export interface RubocopConfig {
   configFilePath: string;
   useBundler: boolean;
   suppressRubocopWarnings: boolean;
+  postFormatVSCodeCommand: string;
 }
 
 const detectBundledRubocop: () => boolean = () => {
@@ -51,6 +52,7 @@ export const getConfig: () => RubocopConfig = () => {
   let useBundler = conf.get('useBundler', false);
   const configPath = conf.get('executePath', '');
   const suppressRubocopWarnings = conf.get('suppressRubocopWarnings', false);
+  const postFormatVSCodeCommand = conf.get('postFormatVSCodeCommands', '');
   let command: string;
 
   // if executePath is present in workspace config, use it.
@@ -68,7 +70,7 @@ export const getConfig: () => RubocopConfig = () => {
     }
     command = detectedPath + cmd;
   }
-
+  
   return {
     command,
     autocorrectArg: conf.get('autocorrectArg', '--auto-correct'),
@@ -76,6 +78,7 @@ export const getConfig: () => RubocopConfig = () => {
     onSave: conf.get('onSave', true),
     useBundler,
     suppressRubocopWarnings,
+    postFormatVSCodeCommand
   };
 };
 
